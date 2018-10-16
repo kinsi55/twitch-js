@@ -945,13 +945,13 @@ client.prototype.handleMessage = function handleMessage(message) {
                 `[${channel}] ${msg} has been banned. Reason: ${reason ||
                   'n/a'}`,
               );
-              this.emit('ban', channel, msg, reason);
+              this.emit('ban', channel, msg, reason, -1, message.tags);
             } else {
               this.log.info(
                 `[${channel}] ${msg} has been timed out for ${duration} seconds. Reason: ${reason ||
                   'n/a'}`,
               );
-              this.emit('timeout', channel, msg, reason, ~~duration);
+              this.emit('timeout', channel, msg, reason, ~~duration, message.tags);
             }
           } else {
             // Chat was cleared by a moderator..
